@@ -5,19 +5,65 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NME Blog</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>NME Blog</h1>
-    <% articles.forEach(function(article, index) { %>
-      <div>
-        <a href="#">
-          <h2><%- article.title.rendered %></h2>
-          <p><%- article.excerpt.rendered %></p>
-        </a>
+  <!--- Navbar Begin-->
+  <section>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+  <!--Navbar Ends-->
+  <!--Main Conntent-->
+  <section class="p-5">
+    <div class="container">
+      <div class="row g-4">
+        <% if (articles != null) { %>
+        <% articles.forEach(function(article, index) { %>
+        <div class="col-md">
+          <div class="card" style="width: 18rem;">
+            <img src="<%- article.thumbnail_url %>" class="card-img-top" alt="<%- article.title.rendered %>">
+            <div class="card-body">
+              <h4 class="card-title mb-3"><%- article.title.rendered.substring(0,39) + "..." %></h4>
+              <a href="" class="btn btn-dark">Read More</a>
+            </div>
+          </div>
+        </div>
+        <% }) %> 
+        <%} else { %>
+          No posts found.
+        <% } %>
+      </div>
     </div>
-    <% }) %> 
-
-
+  </section>
+   <!--Main Content Ends-->
+  <!--Footer Section-->
+  <section>
+    <div class="container">
+      footer
+    </div>
+  </section>
+  <!--Footer Section Ends-->
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
